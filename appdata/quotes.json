@@ -1,0 +1,115 @@
+{
+    "quotes": [
+        {
+            "id": 1,
+            "user": "Nitesh",
+            "text": "Where there is a will there is a way",
+            "imagePath": "images/marion-michele-330691.jpg",
+            "categories":["motivation","love","life"],
+            "likes": 23,
+            "views":12,
+            "author":"",
+            "comments": [
+                {
+                    "id": 1,
+                    "comment": "It's awesome",
+                    "username": "anonymous"
+                },
+                {
+                    "id": 2,
+                    "comment": "It's awesome",
+                    "username": "anonymous"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "user": "Nitesh",
+            "text": "Where there is a will there is a way",
+            "imagePath": "images/marion-michele-330691.jpg",
+            "categories":["motivation","love","life"],
+            "likes": 23,
+            "views":12,
+            "author":"",
+            "comments": [
+                {
+                    "id": 1,
+                    "comment": "It's awesome",
+                    "username": "anonymous"
+                },
+                {
+                    "id": 2,
+                    "comment": "It's awesome",
+                    "username": "anonymous"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "user": "Nitesh",
+            "text": "Where there is a will there is a way",
+            "imagePath": "images/marion-michele-330691.jpg",
+            "categories":["motivation","love","life"],
+            "likes": 23,
+            "views":12,
+            "author":"",
+            "comments": [
+                {
+                    "id": 1,
+                    "comment": "It's awesome",
+                    "username": "anonymous"
+                },
+                {
+                    "id": 2,
+                    "comment": "It's awesome",
+                    "username": "anonymous"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "user": "Nitesh",
+            "text": "Where there is a will there is a way",
+            "imagePath": "images/marion-michele-330691.jpg",
+            "categories":["motivation","love","life"],
+            "likes": 23,
+            "views":12,
+            "author":"",
+            "comments": [
+                {
+                    "id": 1,
+                    "comment": "It's awesome",
+                    "username": "anonymous"
+                },
+                {
+                    "id": 2,
+                    "comment": "It's awesome",
+                    "username": "anonymous"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "user": "Nitesh",
+            "text": "Where there is a will there is a way",
+            "imagePath": "images/marion-michele-330691.jpg",
+            "categories":["motivation","love","life"],
+            "likes": 23,
+            "views":12,
+            "author":"",
+            "comments": [
+                {
+                    "id": 1,
+                    "comment": "It's awesome",
+                    "username": "anonymous"
+                },
+                {
+                    "id": 2,
+                    "comment": "It's awesome",
+                    "username": "anonymous"
+                }
+            ]
+        }
+
+    ]
+}

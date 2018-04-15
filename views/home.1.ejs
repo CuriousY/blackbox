@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <title>Hello, world!</title>
+</head>
+<body>        
+    <%- include('./header.ejs') %>
+    <main class="blog-area main-section">        
+        <section>
+            <div class="container">
+                <div class="row">
+                    <%quotes.forEach(function(quote){%>
+                    <div class="col-lg-4 col-md-6 quotescard">
+                        <div class="card h-100">
+                            <div class="single-post post-style-1">
+                                <div class="blog-info">
+                                    <h4 class="title">
+                                        <a href="#">
+                                            <b><%=quote.text%></b>
+                                        </a>
+                                    </h4>
+                                    <ul class="post-footer">
+                                        <li>
+                                            <a href="#">
+                                                <i class="fas fa-heart"></i><%=quote.likes%></a>                                                
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fas fa-comment"></i><%=quote.comments.length%></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- blog-info -->
+                                <div class="blog-image">
+                                        <img src="<%=quote.imagePath%>" alt="Blog Image">
+                                    </div>
+                            </div>
+                            <!-- single-post -->
+                        </div>
+                        <!-- card -->
+                    </div>
+                    <%})%>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</body>
+
+</html>

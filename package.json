@@ -1,0 +1,31 @@
+{
+  "name": "blackbox",
+  "version": "0.0.1",
+  "description": "application with node and react",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "build": "./node_modules/.bin/webpack -w"
+  },
+  "author": "Nitesh",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "6.13.2",
+    "babel-loader": "6.4.1",
+    "babel-preset-react": "6.5.0",
+    "css-loader": "0.23.1",
+    "react-hot-loader": "1.3.1",
+    "style-loader": "0.13.1",
+    "webpack": "2.4.1",
+    "webpack-dev-server": "2.4.2"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.8",
+    "express": "^4.16.3",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "request": "^2.85.0"
+  }
+}
