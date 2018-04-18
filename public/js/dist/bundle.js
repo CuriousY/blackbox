@@ -832,81 +832,94 @@ module.exports = checkPropTypes;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__appdata_quotes_json__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__appdata_quotes_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__appdata_quotes_json__);
+
 
 
 class Quotes extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
+
+    constructor(props) {
+        super(props);
+        this.state = { quote: __WEBPACK_IMPORTED_MODULE_1__appdata_quotes_json___default.a };
+    }
+    componentDidMount() {
+        console.log('inside did mount ' + this.state.quote.quotes[0]);
+    }
     render() {
-        return QuoteBody();
+        console.log('inside render ' + this.state.quote.quotes.length);
+
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(QuoteBody, { quotes: this.state.quote.quotes });
     }
 }
 
-const QuoteBody = () => {
-    let table = [];
+function QuoteBody(props) {
+    console.log('inside quote body ' + props.quotes);
+    const quotesArray = props.quotes;
 
-    const QuoteElement = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        "div",
-        { className: "col-lg-4 col-md-6 quotescard" },
+    const posts = quotesArray.map((quote, i) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'col-lg-4 col-md-6 quotescard', key: i },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            "div",
-            { className: "card h-100" },
+            'div',
+            { className: 'card h-100' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                "div",
-                { className: "single-post post-style-1" },
+                'div',
+                { className: 'single-post post-style-1' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    "div",
-                    { className: "blog-image" },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { src: "images/marion-michele-330691.jpg", alt: "Blog Image" })
+                    'div',
+                    { className: 'blog-image' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: quote.imagePath, alt: 'Blog Image' })
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    "div",
-                    { className: "blog-info" },
+                    'div',
+                    { className: 'blog-info' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        "h4",
-                        { className: "title" },
+                        'h4',
+                        { className: 'title' },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            "a",
-                            { href: "#" },
+                            'a',
+                            { href: '#' },
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                "b",
+                                'b',
                                 null,
-                                "dummy text"
+                                quote.text
                             )
                         )
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        "ul",
-                        { className: "post-footer" },
+                        'ul',
+                        { className: 'post-footer' },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            "li",
+                            'li',
                             null,
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                "a",
-                                { href: "#" },
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("i", { className: "fas fa-heart" }),
-                                "34"
+                                'a',
+                                { href: '#' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fas fa-heart' }),
+                                quote.likes
                             )
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            "li",
+                            'li',
                             null,
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                "a",
-                                { href: "#" },
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("i", { className: "fas fa-comment" }),
-                                "23"
+                                'a',
+                                { href: '#' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fas fa-comment' }),
+                                quote.comments.length
                             )
                         )
                     )
                 )
             )
         )
+    ));
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'row' },
+        posts
     );
-
-    for (var i = 0; i < 12; i++) {
-        table.push(QuoteElement);
-    }
-
-    return table;
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (Quotes);
@@ -972,7 +985,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-__WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Quotes_jsx__["a" /* default */], null), document.getElementById('quotesSection'));
+__WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Quotes_jsx__["a" /* default */], null), document.getElementById('quotesContainer'));
 
 /***/ }),
 /* 15 */
@@ -19534,6 +19547,12 @@ _calculateChangedBits:b,_defaultValue:a,_currentValue:a,_changedBits:0,Provider:
 c)&&!J.hasOwnProperty(c)&&(d[c]=void 0===b[c]&&void 0!==k?k[c]:b[c])}c=arguments.length-2;if(1===c)d.children=e;else if(1<c){k=Array(c);for(var l=0;l<c;l++)k[l]=arguments[l+2];d.children=k}return{$$typeof:r,type:a.type,key:g,ref:h,props:d,_owner:f}},createFactory:function(a){var b=K.bind(null,a);b.type=a;return b},isValidElement:L,version:"16.3.1",__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED:{ReactCurrentOwner:H,assign:m}},W=Object.freeze({default:V}),X=W&&V||W;
 module.exports=X["default"]?X["default"]:X;
 
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports) {
+
+module.exports = {"quotes":[{"id":1,"user":"Nitesh","text":"Where there is a will there is a way","imagePath":"images/marion-michele-330691.jpg","categories":["motivation","love","life"],"likes":23,"views":12,"author":"","comments":[{"id":1,"comment":"It's awesome","username":"anonymous"},{"id":2,"comment":"It's awesome","username":"anonymous"}]},{"id":1,"user":"Nitesh","text":"Where there is a will there is a way1","imagePath":"images/marion-michele-330691.jpg","categories":["motivation","love","life"],"likes":23,"views":12,"author":"","comments":[{"id":1,"comment":"It's awesome","username":"anonymous"},{"id":2,"comment":"It's awesome","username":"anonymous"}]},{"id":1,"user":"Nitesh","text":"Where there is a will there is a way2","imagePath":"images/marion-michele-330691.jpg","categories":["motivation","love","life"],"likes":23,"views":12,"author":"","comments":[{"id":1,"comment":"It's awesome","username":"anonymous"},{"id":2,"comment":"It's awesome","username":"anonymous"}]},{"id":1,"user":"Nitesh","text":"Where there is a will there is a way3","imagePath":"images/marion-michele-330691.jpg","categories":["motivation","love","life"],"likes":23,"views":12,"author":"","comments":[{"id":1,"comment":"It's awesome","username":"anonymous"},{"id":2,"comment":"It's awesome","username":"anonymous"}]},{"id":1,"user":"Nitesh","text":"Where there is a will there is a way4","imagePath":"images/marion-michele-330691.jpg","categories":["motivation","love","life"],"likes":23,"views":12,"author":"","comments":[{"id":1,"comment":"It's awesome","username":"anonymous"},{"id":2,"comment":"It's awesome","username":"anonymous"}]}]}
 
 /***/ })
 /******/ ]);

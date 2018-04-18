@@ -1,52 +1,64 @@
 import React, { Component } from 'react';
+import QuotesData from '../../appdata/quotes.json';
 
 
 class Quotes extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = { quote: QuotesData };
+    }
+    componentDidMount() {
+        console.log('inside did mount ' + this.state.quote.quotes[0]);
+
+    }
     render() {
+        console.log('inside render ' + this.state.quote.quotes.length)
+
         return (
-               QuoteBody()
+            <QuoteBody quotes={this.state.quote.quotes} />
         )
     }
 }
 
-const QuoteBody = () => 
-{
-    let table = [];
+function QuoteBody(props) {
+    console.log('inside quote body ' + props.quotes);
+    const quotesArray = props.quotes;
 
-    const QuoteElement = <div className="col-lg-4 col-md-6 quotescard">
-        <div className="card h-100">
-            <div className="single-post post-style-1">
-
-                <div className="blog-image">
-                    <img src="images/marion-michele-330691.jpg" alt="Blog Image" />
-                </div>
-                <div className="blog-info">
-                    <h4 className="title">
-                        <a href="#">
-                            <b>dummy text</b>
-                        </a>
-                    </h4>
-                    <ul className="post-footer">
-                        <li>
+    const posts = quotesArray.map((quote,i) =>
+        <div className="col-lg-4 col-md-6 quotescard" key={i}>
+            <div className="card h-100">
+                <div className="single-post post-style-1">
+                    <div className="blog-image">
+                        <img src={quote.imagePath} alt="Blog Image" />
+                    </div>
+                    <div className="blog-info">
+                        <h4 className="title">
                             <a href="#">
-                                <i className="fas fa-heart"></i>34</a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i className="fas fa-comment"></i>23</a>
-                        </li>
-                    </ul>
+                                <b>{quote.text}</b>
+                            </a>
+                        </h4>
+                        <ul className="post-footer">
+                            <li>
+                                <a href="#">
+                                    <i className="fas fa-heart"></i>{quote.likes}</a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i className="fas fa-comment"></i>{quote.comments.length}</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>;
+    );
+    return (
+        <div className="row" >
+            {posts}
+        </div>
+    );
 
-    for(var i=0;i<12;i++){
-        table.push(QuoteElement);
-    }
-
-    return table;
-
-}
+};
 
 export default Quotes;

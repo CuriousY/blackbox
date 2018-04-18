@@ -25,7 +25,7 @@
         {
             "id": 1,
             "user": "Nitesh",
-            "text": "Where there is a will there is a way",
+            "text": "Where there is a will there is a way1",
             "imagePath": "images/marion-michele-330691.jpg",
             "categories":["motivation","love","life"],
             "likes": 23,
@@ -47,7 +47,7 @@
         {
             "id": 1,
             "user": "Nitesh",
-            "text": "Where there is a will there is a way",
+            "text": "Where there is a will there is a way2",
             "imagePath": "images/marion-michele-330691.jpg",
             "categories":["motivation","love","life"],
             "likes": 23,
@@ -69,7 +69,7 @@
         {
             "id": 1,
             "user": "Nitesh",
-            "text": "Where there is a will there is a way",
+            "text": "Where there is a will there is a way3",
             "imagePath": "images/marion-michele-330691.jpg",
             "categories":["motivation","love","life"],
             "likes": 23,
@@ -91,7 +91,7 @@
         {
             "id": 1,
             "user": "Nitesh",
-            "text": "Where there is a will there is a way",
+            "text": "Where there is a will there is a way4",
             "imagePath": "images/marion-michele-330691.jpg",
             "categories":["motivation","love","life"],
             "likes": 23,
