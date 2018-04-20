@@ -6,18 +6,25 @@ class Quotes extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { quote: QuotesData };
+        this.state = { quote: [] };
     }
     componentDidMount() {
-        console.log('inside did mount ' + this.state.quote.quotes[0]);
+        console.log('inside did mount ');
+        this.setState({ quote: QuotesData})
 
     }
     render() {
-        console.log('inside render ' + this.state.quote.quotes.length)
+        console.log('inside render');
+        
+        if (this.state.quote.quotes.length > 0) {
+            return (
+                <QuoteBody quotes={this.state.quote.quotes} />
 
-        return (
-            <QuoteBody quotes={this.state.quote.quotes} />
-        )
+            )
+        }
+        else{
+            return null;
+        }
     }
 }
 
@@ -25,7 +32,7 @@ function QuoteBody(props) {
     console.log('inside quote body ' + props.quotes);
     const quotesArray = props.quotes;
 
-    const posts = quotesArray.map((quote,i) =>
+    const posts = quotesArray.map((quote, i) =>
         <div className="col-lg-4 col-md-6 quotescard" key={i}>
             <div className="card h-100">
                 <div className="single-post post-style-1">
