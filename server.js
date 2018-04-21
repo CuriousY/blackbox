@@ -10,30 +10,28 @@ const express = require('express'),
     mongoose = require('mongoose');
 
 app.set('view engine', 'ejs');
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 DBConnection.connect();
 
 app.get('/getQuotes', (req, res) => {
-    QuotesModel.find({}, function (error, quotes) {
-        if (error) {
-            console.log(error);
-            res.send("error retrieving db");
-        }
-        else {
-            console.log('data retrieved ' + JSON.stringify(quotes));
-            res.send(quotes);            
-        }
-    });
+            res.send(quotesData);    
+    // QuotesModel.find({}, function (error, quotes) {
+    //     if (error) {
+    //         console.log(error);
+    //         res.send("error retrieving db");
+    //     }
+    //     else {
+    //         console.log('data retrieved ' + JSON.stringify(quotes));
+    //         res.send(quotes);
+    //     }
+    // });
 
 });
 
 app.get('/', (req, res) => {
-    res.render('home', { quotes: quotesData.quotes });
+    res.sendFile(__dirname + '/index.html');
 });
-
-
-
 
 app.post('/quoteSubmit', (req, res) => {
     var requestJSON = JSON.parse(req.body.quoteData);

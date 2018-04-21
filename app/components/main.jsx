@@ -1,21 +1,47 @@
-import React from "react";
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import Quotes from '../containers/quotes.jsx';
 
-export const Main = (props) => {
+const Main = () => (
+    <main className="blog-area main-section">
+        <section>
+            <div className="container" id="quotesContainer">
+                <Switch>
+                    <Route exact path='/' component={Home} />
+                    <Route exact path='/quotes' component={Quotes} />
+                    <Route exact path='/poems' component={Poems} />
+                    <Route exact path='/stories' component={Stories} />
+                    <Route exact path='/about' component={About} />
+                </Switch>
+            </div>
+        </section>
+    </main>
+);
+
+const Home = () => {
+    return (<div>
+        Home
+    </div>
+    );
+}
+const Poems = () => {
     return (
         <div>
-            <div className="row">
-                <div className="col-xs-12">
-                    <h1>The Main Page</h1>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-xs-12">
-                    <button
-                        className="btn btn-primary"
-                        onClick={() => props.changeUsername('Anna')}>Change the Username
-                    </button>
-                </div>
-            </div>
-        </div>
+            Poems
+    </div>
     );
-};
+}
+const Stories = () => {
+    return (<div>
+        Stories
+    </div>
+    );
+}
+const About = () => {
+    return (<div>
+        About
+    </div>
+    );
+}
+
+export default Main;

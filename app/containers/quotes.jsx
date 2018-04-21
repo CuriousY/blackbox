@@ -1,37 +1,38 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import QuotesData from '../../appdata/quotes.json';
+import { getQuotes } from '../actions/quotesAction';
 
 
 class Quotes extends Component {
-
     constructor(props) {
         super(props);
-        this.state = { quote: [] };
     }
-    componentDidMount() {
-        console.log('inside did mount ');
-        this.setState({ quote: QuotesData})
-
+    componentWillMount() {
+        this.props.getQuotes();
     }
     render() {
-        console.log('inside render');
-        
-        if (this.state.quote.quotes.length > 0) {
+        if (this.props.quotesData) {
             return (
-                <QuoteBody quotes={this.state.quote.quotes} />
-
+                <QuoteBody quotes={this.props.quotesData} />
             )
         }
-        else{
+        else {
             return null;
         }
     }
 }
 
-function QuoteBody(props) {
-    console.log('inside quote body ' + props.quotes);
-    const quotesArray = props.quotes;
+function mapStateToProps(state) {
+    return {
+        quotesData: state.quotesData.quotes,
+        quoteNextItem: state.quotesData.newQuote
+    }
+}
 
+const QuoteBody = (props) => {
+    const quotesArray = props.quotes && props.quotes.quotes ? props.quotes.quotes : [];
+    if(quotesArray.length > 0){
     const posts = quotesArray.map((quote, i) =>
         <div className="col-lg-4 col-md-6 quotescard" key={i}>
             <div className="card h-100">
@@ -65,7 +66,16 @@ function QuoteBody(props) {
             {posts}
         </div>
     );
+}
+else{
+    return (
+        <div className="row" >
+            <p>No results fetched</p>
+        </div>
+    );
+}
+    
 
 };
 
-export default Quotes;
+export default connect(mapStateToProps, { getQuotes })(Quotes);

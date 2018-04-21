@@ -1,10 +1,15 @@
-import { createStore, combineReducers, applyMiddleWare } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import allReducers from './reducers';
 
-import user from  './reducers/userReducer';
+const initialState = {};
 
-export default createStore(
-    combineReducers({
-        user
-    }),
-    {}
-)
+const middleware = [thunk];
+
+const store = createStore(
+    allReducers,
+    initialState,
+      applyMiddleware(...middleware)
+  );
+  
+  export default store;
