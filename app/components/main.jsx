@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Quotes from '../containers/quotes.jsx';
+import QuoteForm from '../containers/quotesubmit.jsx'
 
 const Main = () => (
     <main className="blog-area main-section">
@@ -11,7 +12,7 @@ const Main = () => (
                     <Route exact path='/quotes' component={Quotes} />
                     <Route exact path='/poems' component={Poems} />
                     <Route exact path='/stories' component={Stories} />
-                    <Route exact path='/about' component={About} />
+                    <Route exact path='/admin' component={QuoteForm} />
                 </Switch>
             </div>
         </section>

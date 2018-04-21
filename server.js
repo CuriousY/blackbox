@@ -33,6 +33,10 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
+app.get('/admin', (req, res) => {
+    res.sendFile(__dirname + '/admin.html');
+});
+
 app.post('/quoteSubmit', (req, res) => {
     var requestJSON = JSON.parse(req.body.quoteData);
 

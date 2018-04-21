@@ -13,7 +13,7 @@ export const getQuotes = () => dispatch => {
         );
 };
 
-export const addItem = quote => dispatch => {
+export const postQuote = quote => dispatch => {
     dispatch({
         type: POST_QUOTES,
         payload: quote

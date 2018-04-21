@@ -3557,8 +3557,8 @@ const Header = () => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement
                     { className: "nav-item" },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["d" /* Link */],
-                        { className: "nav-link", to: "/about" },
-                        "About"
+                        { className: "nav-link", to: "/admin" },
+                        "admin"
                     )
                 )
             )
@@ -26747,6 +26747,8 @@ module.exports = function(originalModule) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__containers_quotes_jsx__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__containers_quotesubmit_jsx__ = __webpack_require__(118);
+
 
 
 
@@ -26767,7 +26769,7 @@ const Main = () => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Route */], { exact: true, path: '/quotes', component: __WEBPACK_IMPORTED_MODULE_2__containers_quotes_jsx__["a" /* default */] }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Route */], { exact: true, path: '/poems', component: Poems }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Route */], { exact: true, path: '/stories', component: Stories }),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Route */], { exact: true, path: '/about', component: About })
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Route */], { exact: true, path: '/admin', component: __WEBPACK_IMPORTED_MODULE_3__containers_quotesubmit_jsx__["a" /* default */] })
             )
         )
     )
@@ -26863,27 +26865,15 @@ const QuoteBody = props => {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     { className: 'single-post post-style-1' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { 'class': 'quoteimg', src: 'images/milky.jpg' }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
-                        { className: 'blog-image' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: quote.imagePath, alt: 'Blog Image' })
+                        { 'class': 'quoteText centered' },
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mattis felis ac ipsum suscipit hel igd'
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
                         { className: 'blog-info' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'h4',
-                            { className: 'title' },
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'a',
-                                { href: '#' },
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'b',
-                                    null,
-                                    quote.text
-                                )
-                            )
-                        ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'ul',
                             { className: 'post-footer' },
@@ -26930,7 +26920,7 @@ const QuoteBody = props => {
     }
 };
 
-/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["b" /* connect */])(mapStateToProps, { getQuotes: __WEBPACK_IMPORTED_MODULE_3__actions_quotesAction__["a" /* getQuotes */] })(Quotes));
+/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["b" /* connect */])(mapStateToProps, { getQuotes: __WEBPACK_IMPORTED_MODULE_3__actions_quotesAction__["b" /* getQuotes */] })(Quotes));
 
 /***/ }),
 /* 112 */
@@ -27038,17 +27028,141 @@ const getQuotes = () => dispatch => {
         payload: quotes
     }));
 };
-/* harmony export (immutable) */ __webpack_exports__["a"] = getQuotes;
+/* harmony export (immutable) */ __webpack_exports__["b"] = getQuotes;
 
 
-const addItem = quote => dispatch => {
+const postQuote = quote => dispatch => {
     dispatch({
         type: __WEBPACK_IMPORTED_MODULE_0__actionType__["b" /* POST_QUOTES */],
         payload: quote
     });
 };
-/* unused harmony export addItem */
+/* harmony export (immutable) */ __webpack_exports__["a"] = postQuote;
 
+
+/***/ }),
+/* 117 */,
+/* 118 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_redux__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__actions_quotesAction__ = __webpack_require__(116);
+
+
+
+
+
+class QuoteForm extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
+    constructor(props) {
+        super(props);
+        this.onSubmit = this.onSubmit.bind(this);
+    }
+    onSubmit(e) {
+        e.preventDefault();
+        let categories = [];
+
+        if (this.refs.qcategories.selectedOptions && this.refs.qcategories.selectedOptions.length > 0) {
+            for (var i = 0; i < this.refs.qcategories.selectedOptions.length; i++) {
+                categories.push(this.refs.qcategories.selectedOptions[i].value);
+            }
+        }
+        const post = {
+            username: this.refs.username.value,
+            quoteText: this.refs.quoteText.value,
+            categories: categories
+
+        };
+        console.log('values ', JSON.stringify(post));
+    }
+    render() {
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'main',
+            { className: 'blog-area main-section form-area' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'form',
+                { className: 'container quote-form', onSubmit: this.onSubmit },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'container' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'form-group quote-form-heading' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'span',
+                            null,
+                            'Enter your quotes here '
+                        )
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'form-group' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', ref: 'username', className: 'form-control', placeholder: 'Enter your name', name: 'username', id: 'username' })
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'form-group' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('textarea', { className: 'form-control', ref: 'quoteText', id: 'quotetext', name: 'quotetext', placeholder: 'Your quote here', 'aria-label': 'With textarea' })
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'form-group' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'label',
+                            { htmlFor: 'exampleFormControlSelect2' },
+                            'Choose categories'
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'select',
+                            { ref: 'qcategories', multiple: 'multiple', className: 'form-control selectpicker', name: 'categories', id: 'qcategories' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'option',
+                                null,
+                                'Life'
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'option',
+                                null,
+                                'Motivation'
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'option',
+                                null,
+                                'Travel'
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'option',
+                                null,
+                                'Happiness'
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'option',
+                                null,
+                                'Money'
+                            )
+                        )
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'form-group btn-container' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'button',
+                            { type: 'submit', className: 'btn btn-primary' },
+                            'Submit'
+                        )
+                    )
+                )
+            )
+        );
+    }
+}
+
+QuoteForm.propTypes = {};
+
+/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["b" /* connect */])(null, { postQuote: __WEBPACK_IMPORTED_MODULE_3__actions_quotesAction__["a" /* postQuote */] })(QuoteForm));
 
 /***/ })
 /******/ ]);
