@@ -6,26 +6,25 @@ const express = require('express'),
     port = process.env.port || 3000,
     DBConnection = require('./config/Connection.js'),
     QuotesModel = require('./models/QuotesModel'),
-    quotesData = require('./appdata/quotes.json'),
     mongoose = require('mongoose');
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
-app.use(bodyParser.urlencoded({ extended: false }));
 DBConnection.connect();
 
-app.get('/getQuotes', (req, res) => {
-            res.send(quotesData);    
-    // QuotesModel.find({}, function (error, quotes) {
-    //     if (error) {
-    //         console.log(error);
-    //         res.send("error retrieving db");
-    //     }
-    //     else {
-    //         console.log('data retrieved ' + JSON.stringify(quotes));
-    //         res.send(quotes);
-    //     }
-    // });
+app.get('/getQuotes', (req, res) => {  
+    QuotesModel.find({}, function (error, quotes) {
+        if (error) {
+            console.log(error);
+            res.send("error retrieving db");
+        }
+        else {
+            res.send(quotes);
+        }
+    });
 
 });
 
@@ -38,23 +37,31 @@ app.get('/admin', (req, res) => {
 });
 
 app.post('/quoteSubmit', (req, res) => {
-    var requestJSON = JSON.parse(req.body.quoteData);
+    var quoteJSON = req.body.quote;
+    if (quoteJSON) {
+        var QuotesData = new QuotesModel({
+            _id: new mongoose.Types.ObjectId(),
+            author: quoteJSON.author,
+            quoteText: quoteJSON.quoteText,
+            categories: quoteJSON.categories,
+            imagePath:"images/marion-michele-330691.jpg",
+            likes:23
+        });
+        QuotesData.save(function (err) {
+            if (err) {
+                throw err;
+            }
+            else {
+                console.debug('data saved in DB');
+            }
+        });
+        res.status(200).json('Data submitted');
+    }
+    else {
+        res.status(500).send('Something broke!');
+    }
 
-    var QuotesData = new QuotesModel({
-        _id: new mongoose.Types.ObjectId(),
-        username: requestJSON.username,
-        quoteText: requestJSON.quoteText,
-        categories: requestJSON.categories
-    });
-    QuotesData.save(function (err) {
-        if (err) {
-            throw err;
-        }
-        else {
-            console.log('data saved successfully');
-        }
-    });
-    res.json("Data submitted by " + requestJSON.username);
+
 });
 
 app.get('/admin', (req, res) => {

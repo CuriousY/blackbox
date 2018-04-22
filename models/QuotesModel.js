@@ -1,11 +1,14 @@
 const mongoose = require('mongoose');
 
-var Schema = mongoose.Schema;
+var Schema = mongoose.Schema,
+    ObjectId = Schema.ObjectId;
 
 var QuotesSchema = new Schema({
-    _id: mongoose.Schema.Types.ObjectId,
-    username : mongoose.Schema.Types.String,
-    quoteText : mongoose.Schema.Types.String,
+    _id: ObjectId,
+    author : Schema.Types.String,
+    quoteText : Schema.Types.String,
+    imagePath:Schema.Types.String,
+    likes : Schema.Types.Number,
     categories : []
 
 });

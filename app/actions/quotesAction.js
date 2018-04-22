@@ -14,8 +14,22 @@ export const getQuotes = () => dispatch => {
 };
 
 export const postQuote = quote => dispatch => {
-    dispatch({
+    let quoteData = {
+        quote : quote
+    }
+    let parsedJSON = JSON.stringify(quoteData);
+    fetch('/quoteSubmit', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8'
+    },
+    body: JSON.stringify(quoteData)
+  })
+    .then(res => res.json())
+    .then(quote =>
+      dispatch({
         type: POST_QUOTES,
         payload: quote
-    });
+      })
+    );
 }

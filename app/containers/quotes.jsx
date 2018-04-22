@@ -12,7 +12,7 @@ class Quotes extends Component {
         this.props.getQuotes();
     }
     render() {
-        if (this.props.quotesData) {
+        if (this.props.quotesData) {            
             return (
                 <QuoteBody quotes={this.props.quotesData} />
             )
@@ -30,16 +30,15 @@ function mapStateToProps(state) {
     }
 }
 
-const QuoteBody = (props) => {
-    const quotesArray = props.quotes && props.quotes.quotes ? props.quotes.quotes : [];
+const QuoteBody = (props) => {    
+    const quotesArray = props.quotes && props.quotes.length > 0 ? props.quotes : [];
     if (quotesArray.length > 0) {
         const posts = quotesArray.map((quote, i) =>
             <div className="col-lg-4 col-md-6 quotescard" key={i}>
                 <div className="card h-100">
                     <div className="single-post post-style-1">
-                        <img class="quoteimg" src="images/milky.jpg" />
-                        <div class="quoteText centered">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mattis felis ac ipsum suscipit hel
-                            igd
+                        <img className="quoteimg" src={quote.imagePath} />
+                        <div className="quoteText centered">{quote.quoteText}
                         </div>
                         <div className="blog-info">
                             <ul className="post-footer">
@@ -49,7 +48,7 @@ const QuoteBody = (props) => {
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <i className="fas fa-comment"></i>{quote.comments.length}</a>
+                                        <i className="fas fa-comment"></i>4</a>
                                 </li>
                             </ul>
                         </div>

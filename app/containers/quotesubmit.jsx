@@ -18,12 +18,12 @@ class QuoteForm extends Component {
             }
         }
         const post = {
-            username: this.refs.username.value,
+            author: this.refs.author.value,
             quoteText: this.refs.quoteText.value,
             categories: categories
 
         };
-        console.log('values ', JSON.stringify(post));
+        this.props.postQuote(post);
     }
     render() {
         return (
@@ -34,7 +34,7 @@ class QuoteForm extends Component {
                             <span>Enter your quotes here </span>
                         </div>
                         <div className="form-group">
-                            <input type="text" ref="username" className="form-control" placeholder="Enter your name" name="username" id="username" />
+                            <input type="text" ref="author" className="form-control" placeholder="Enter your name" name="username" id="username" />
                         </div>
                         <div className="form-group">
                             <textarea className="form-control" ref="quoteText" id="quotetext" name="quotetext" placeholder="Your quote here" aria-label="With textarea"></textarea>
