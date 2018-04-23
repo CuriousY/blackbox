@@ -3868,6 +3868,10 @@ const QuoteBody = props => {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_redux__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__actions_quotesAction__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_imagemodal_jsx__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__public_js_custom_admin__ = __webpack_require__(116);
+
+
 
 
 
@@ -3877,6 +3881,9 @@ class QuoteForm extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     constructor(props) {
         super(props);
         this.onSubmit = this.onSubmit.bind(this);
+    }
+    componentDidMount() {
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__public_js_custom_admin__["a" /* default */])();
     }
     onSubmit(e) {
         e.preventDefault();
@@ -3897,82 +3904,106 @@ class QuoteForm extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     }
     render() {
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'main',
-            { className: 'blog-area main-section form-area' },
+            'div',
+            null,
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'form',
-                { className: 'container quote-form', onSubmit: this.onSubmit },
+                'main',
+                { className: 'blog-area main-section form-area' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    { className: 'container' },
+                    'form',
+                    { className: 'quote-form', onSubmit: this.onSubmit },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
-                        { className: 'form-group quote-form-heading' },
+                        { className: 'container' },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'span',
-                            null,
-                            'Enter your quotes here '
-                        )
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'div',
-                        { className: 'form-group' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', ref: 'author', className: 'form-control', placeholder: 'Enter your name', name: 'username', id: 'username' })
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'div',
-                        { className: 'form-group' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('textarea', { className: 'form-control', ref: 'quoteText', id: 'quotetext', name: 'quotetext', placeholder: 'Your quote here', 'aria-label': 'With textarea' })
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'div',
-                        { className: 'form-group' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'label',
-                            { htmlFor: 'exampleFormControlSelect2' },
-                            'Choose categories'
+                            'div',
+                            { className: 'quote-form-heading' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'span',
+                                null,
+                                'Enter your quotes here '
+                            )
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'select',
-                            { ref: 'qcategories', multiple: 'multiple', className: 'form-control selectpicker', name: 'categories', id: 'qcategories' },
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'option',
-                                null,
-                                'Life'
-                            ),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'option',
-                                null,
-                                'Motivation'
-                            ),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'option',
-                                null,
-                                'Travel'
-                            ),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'option',
-                                null,
-                                'Happiness'
-                            ),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'option',
-                                null,
-                                'Money'
-                            )
-                        )
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'div',
-                        { className: 'form-group btn-container' },
+                            'label',
+                            { className: 'lblCategories', htmlFor: 'username' },
+                            'Your name : '
+                        ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'button',
-                            { type: 'submit', className: 'btn btn-primary' },
-                            'Submit'
+                            'div',
+                            { className: 'form-group' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', ref: 'author', className: 'form-control', placeholder: 'Enter your name', name: 'username', id: 'username' })
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'label',
+                            { className: 'lblCategories', htmlFor: 'quotetext' },
+                            'Your Quote here'
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'form-group' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('textarea', { className: 'form-control', ref: 'quoteText', id: 'quotetext', name: 'quotetext', placeholder: 'Your quote here', 'aria-label': 'With textarea' })
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'form-group imageSelectBlock' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'button',
+                                { type: 'button', 'data-toggle': 'modal', 'data-target': '#imagePickerModal', className: 'btn btn-info' },
+                                'Click to select image'
+                            )
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'form-group' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'label',
+                                { className: 'lblCategories', htmlFor: 'exampleFormControlSelect2' },
+                                'Choose categories'
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'select',
+                                { ref: 'qcategories', multiple: 'multiple', className: 'form-control selectpicker', name: 'categories', id: 'qcategories' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'option',
+                                    null,
+                                    'Life'
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'option',
+                                    null,
+                                    'Motivation'
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'option',
+                                    null,
+                                    'Travel'
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'option',
+                                    null,
+                                    'Happiness'
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'option',
+                                    null,
+                                    'Money'
+                                )
+                            )
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'form-group btn-container' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'button',
+                                { type: 'submit', className: 'btn btn-primary' },
+                                'Submit'
+                            )
                         )
                     )
                 )
-            )
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__components_imagemodal_jsx__["a" /* default */], null)
         );
     }
 }
@@ -3995,7 +4026,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_router_dom__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_App_jsx__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store__ = __webpack_require__(46);
-
 
 
 
@@ -27169,6 +27199,205 @@ module.exports = function(originalModule) {
 	return module;
 };
 
+
+/***/ }),
+/* 115 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+
+
+const SelectImageModal = () => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+    "div",
+    { className: "modal fade", id: "imagePickerModal", tabIndex: "-1", role: "dialog", "aria-labelledby": "exampleModalLabel", "aria-hidden": "true" },
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        "div",
+        { className: "modal-dialog", role: "document" },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "div",
+            { className: "modal-content" },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "div",
+                { className: "modal-header" },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    "h5",
+                    { className: "modal-title", id: "exampleModalLabel" },
+                    "Choose background "
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    "button",
+                    { type: "button", className: "close btnCloseImageModal", "aria-label": "Close" },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "span",
+                        { "aria-hidden": "true" },
+                        "\xD7"
+                    )
+                )
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "div",
+                { className: "modal-body" },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    "div",
+                    { className: "row" },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "div",
+                        { className: "col-md-4 imageholder" },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            "div",
+                            { className: "thumbnail" },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { src: "images/milky.jpg", "data-image-id": "ootb1", alt: "Lights" })
+                        )
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "div",
+                        { className: "col-md-4 imageholder" },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            "div",
+                            { className: "thumbnail" },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { src: "images/milky.jpg", "data-image-id": "ootb2", alt: "Nature" })
+                        )
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "div",
+                        { className: "col-md-4 imageholder" },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            "div",
+                            { className: "thumbnail" },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { src: "images/milky.jpg", "data-image-id": "ootb3", alt: "Fjords" })
+                        )
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "div",
+                        { className: "col-md-4 imageholder" },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            "div",
+                            { className: "thumbnail" },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { src: "images/milky.jpg", "data-image-id": "ootb4", alt: "Fjords" })
+                        )
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "div",
+                        { className: "col-md-4 imageholder" },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            "div",
+                            { className: "thumbnail" },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { src: "images/milky.jpg", "data-image-id": "ootb5", alt: "Fjords" })
+                        )
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "div",
+                        { className: "col-md-4 imageholder" },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            "div",
+                            { className: "thumbnail" },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { src: "images/milky.jpg", "data-image-id": "ootb6", alt: "Fjords" })
+                        )
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "div",
+                        { className: "col-md-4 imageholder" },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            "div",
+                            { className: "thumbnail" },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { src: "images/milky.jpg", "data-image-id": "ootb7", alt: "Fjords" })
+                        )
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "div",
+                        { className: "col-md-4 imageholder" },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            "div",
+                            { className: "thumbnail" },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { src: "images/milky.jpg", "data-image-id": "ootb8", alt: "Fjords" })
+                        )
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "div",
+                        { className: "col-md-4 imageholder" },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            "div",
+                            { className: "thumbnail" },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { src: "images/milky.jpg", "data-image-id": "ootb9", alt: "Fjords" })
+                        )
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "div",
+                        { className: "col-md-4 imageholder" },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            "div",
+                            { className: "thumbnail" },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { src: "images/milky.jpg", "data-image-id": "ootb10", alt: "Fjords" })
+                        )
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "div",
+                        { className: "col-md-4 imageholder" },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            "div",
+                            { className: "thumbnail" },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { src: "images/milky.jpg", "data-image-id": "ootb11", alt: "Fjords" })
+                        )
+                    )
+                )
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "div",
+                { className: "modal-footer" },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    "button",
+                    { type: "button", className: "btn btn-primary btn-selectImage disabled" },
+                    "Ok"
+                )
+            )
+        )
+    )
+);
+
+/* harmony default export */ __webpack_exports__["a"] = (SelectImageModal);
+
+/***/ }),
+/* 116 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = registerImageFunction;
+
+function registerImageFunction() {
+    var imageID = "";
+    var imageSrc = "";
+    var imageSelectedSrc = "";
+    var imageSelectedID = "";
+
+    $('.thumbnail').on('click', function (e) {
+        $('.thumbnail').removeClass('highlight imageSelected');
+        $(this).addClass('highlight imageSelected');
+        $('.btn-selectImage').removeClass('disabled');
+        imageSelectedID = $(this).children('img').data('image-id');
+        imageSrc = $(this).children('img').attr('src');
+    });
+
+    $('.btnCloseImageModal').on('click', function (e) {
+        e.preventDefault();
+        $('#imagePickerModal').modal('toggle');
+        $('.thumbnail').removeClass('highlight imageSelected');
+        $('.btn-selectImage').addClass('disabled');
+    });
+
+    $('.btn-selectImage').on('click', function (e) {
+        e.preventDefault();
+        if (!$(this).hasClass('disabled')) {
+            $('#imagePickerModal').modal('toggle');
+            $('.thumbnail').removeClass('highlight imageSelected');
+            imageID = imageSelectedID;
+            console.log('image id ', imageID);
+
+            $('#selectedImageContainer').attr('src', imageSrc);
+        }
+    });
+}
 
 /***/ })
 /******/ ]);

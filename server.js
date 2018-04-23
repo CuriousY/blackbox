@@ -33,7 +33,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/admin', (req, res) => {
-    res.sendFile(__dirname + '/admin.html');
+    res.sendFile(__dirname + '/public/index.html');
 });
 
 app.post('/quoteSubmit', (req, res) => {
